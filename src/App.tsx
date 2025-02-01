@@ -14,6 +14,7 @@ import { Badge } from './components/atoms/Badge/Badge'
 import { BreadCrumbContainer, Breadcrumb } from './components/molecules/Breadcrumb/Breadcrumb'
 import { CalendarContainer, Calendar } from './components/organisms/Calendar/Calendar'
 import { Card, CardContainerWrapper } from './components/molecules/Card/Card'
+import { Carousel, SlideContent } from './components/molecules/Carousel/Carousel'
 
 const darkTheme: ThemeType = {
   ...defaultTheme,
@@ -204,7 +205,7 @@ const App: React.FC = () => {
             {selectedCalendar && <p>selectedCalendar Date: {selectedCalendar.toLocaleDateString()}</p>}
           </CalendarContainer>
         </div>
-        <div style={{width: '30%'}}>
+        <div style={{ width: '30%' }}>
           <h2>Card</h2>
           <CardContainerWrapper>
             <Card>
@@ -219,6 +220,16 @@ const App: React.FC = () => {
               </Card.Footer>
             </Card>
           </CardContainerWrapper>
+        </div>
+        <div style={{ width: '30%' }}>
+          <h2>Carousel</h2>
+          <div>
+            <Carousel loop>
+              <SlideContent>Slide 1</SlideContent>
+              <SlideContent>Slide 2</SlideContent>
+              <SlideContent>Slide 3</SlideContent>
+            </Carousel>
+          </div>
         </div>
       </Suspense>
     </div>
