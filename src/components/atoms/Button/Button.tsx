@@ -1,31 +1,13 @@
 import React from 'react';
-import styled from 'styled-components'
-
-const StyledButton = styled.button<{primary?: boolean}>`
-	background-color: ${(props) => (props.primary) ? '#007bff' : '#6c757d'};
-	color: white;
-	border: none;
-	padding: 10px 20px;
-	border-radius: 5px;
-	cursor: pointer;
-	font-size: 16px;
-
-	&:hover {
-		opacity: 0.9;
-	}
-`
-
+import './Button.css';
 interface ButtonProps {
-	children: React.ReactNode;
-	primary?: boolean;
-	onClick?: () => void;
+	children: React.ReactNode
+	variant?: 'primary' | 'secondary';
 }
 
-const Button: React.FC<ButtonProps> = ({children, ...props}) => {
+const Button: React.FC<ButtonProps> = ({ variant = 'primary', ...props }) => {
 	return (
-		<StyledButton {...props}>
-			{children}
-		</StyledButton>
+		<button className={`btn btn-${variant}`} {...props} />
 	)
 }
 
