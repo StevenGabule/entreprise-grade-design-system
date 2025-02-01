@@ -8,6 +8,8 @@ import { AccordionHeader } from './components/organisms/Accordion/AccordionHeade
 import { AccordionPanel } from './components/organisms/Accordion/AccordionPanel'
 import { Alert } from './components/molecules/Alert/Alert'
 import { AlertDialog } from './components/organisms/AlertDialog/AlertDialog'
+import { AspectRatio, StyledImage } from './components/atoms/AspectRatio/AspectRatio'
+import { Avatar, AvatarContainerDiv } from './components/atoms/Avatar/Avatar'
 
 const darkTheme: ThemeType = {
   ...defaultTheme,
@@ -31,7 +33,7 @@ const App: React.FC = () => {
   const handleCloseDialog = () => setDialogOpen(false)
 
   return (
-    <div style={{ width: '100%', height: '100vh', background: theme.colors.background, color: theme.colors.text }}>
+    <div style={{ width: '100%', background: theme.colors.background, color: theme.colors.text }}>
       <h1>Design System</h1>
       <Suspense fallback={<div>Loading...</div>}>
         <div>
@@ -107,6 +109,51 @@ const App: React.FC = () => {
               </>
             }
           />
+        </div>
+        <div style={{ marginBottom: '10%' }}>
+          <h2>Aspect Ratio Component Example</h2>
+          <div style={{ width: '50%', height: 300 }}>
+
+            <AspectRatio ratio={16 / 9}>
+              <StyledImage src="https://images.unsplash.com/photo-1736452221254-ae8d76bf3c79?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Placeholder" />
+            </AspectRatio>
+          </div>
+        </div>
+        <div>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente dignissimos fuga ratione minus quo vel reiciendis odio, maxime eaque quibusdam dolor quas numquam ut impedit doloremque voluptatem rem, nobis at.</p>
+        </div>
+
+        <div>
+          <h2>Avatar</h2>
+          <AvatarContainerDiv>
+            {/* Avatar with an image */}
+            <Avatar
+              src="https://plus.unsplash.com/premium_photo-1689539137236-b68e436248de?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="User Avatar"
+              size="large"
+              showStatus
+              status="online" />
+
+            {/* Avatar with fallback initials (derived from alt) */}
+            <Avatar
+              src={'https://plus.unsplash.com/premium_photo-1689629870780-5d0e655383e6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'}
+              alt="John Doe"
+              size="medium"
+              variant="circle"
+              showStatus
+              status="busy" />
+
+            {/* Avatar with custom size and square variant */}
+            <Avatar
+              src={'https://plus.unsplash.com/premium_photo-1689977871600-e755257fb5f8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'}
+              alt="Jane Doe"
+              size={80}
+              variant="square"
+              fallback="JD"
+              showStatus
+              status="away"
+            />
+          </AvatarContainerDiv>
         </div>
       </Suspense>
     </div>
