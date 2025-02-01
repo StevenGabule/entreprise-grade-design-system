@@ -5,7 +5,7 @@ export const GlobalStyles = createGlobalStyle`
 	/* Global Reset and Base Typography */
 	body {
 		margin: 0;
-		padding: 0;
+		padding: 20px;
 		font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 		font-size: 16px;
 		line-height: 1.5;

@@ -3,9 +3,10 @@ import { Button } from './components/atoms/Button/Button'
 import { defaultTheme, ThemeType } from './themes/defaultTheme'
 import { useTheme } from './themes/CustomThemeProvider'
 import { Accordion } from './components/organisms/Accordion/Accordion'
-import { AccordionItem } from './components/organisms/Accordion/AccordonItem'
+import { AccordionItem } from './components/organisms/Accordion/AccordionItem'
 import { AccordionHeader } from './components/organisms/Accordion/AccordionHeader'
 import { AccordionPanel } from './components/organisms/Accordion/AccordionPanel'
+import { Alert } from './components/molecules/Alert/Alert'
 
 const darkTheme: ThemeType = {
   ...defaultTheme,
@@ -58,6 +59,33 @@ const App: React.FC = () => {
               </AccordionPanel>
             </AccordionItem>
           </Accordion>
+        </div>
+
+        <div>
+          <h2>Alert Component Example</h2>
+          <Alert
+            variant="success"
+            title="Success!"
+            message="Your operation was completed successfully."
+            dismissible
+            // autoDismiss={5000}  // Alert will auto-dismiss after 5 seconds
+            onClose={() => console.log('Alert closed')}
+          /> <Alert
+            variant="error"
+            title="Error!"
+            message="Something went wrong. Please try again."
+            dismissible
+          />
+          <Alert
+            variant="warning"
+            message="This is a warning alert without a title."
+          />
+          <Alert
+            variant="info"
+            title="FYI"
+            message="This is an informational alert."
+            dismissible
+          />
         </div>
 
       </Suspense>
