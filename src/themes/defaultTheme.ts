@@ -11,3 +11,5 @@ export const defaultTheme = {
         large: '24px',
     }
 }
+
+export type ThemeType = typeof defaultTheme;

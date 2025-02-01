@@ -1,14 +1,21 @@
 import React from 'react';
-import './Button.css';
-interface ButtonProps {
+import styled from 'styled-components'
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 	children: React.ReactNode
 	variant?: 'primary' | 'secondary';
 }
 
-const Button: React.FC<ButtonProps> = ({ variant = 'primary', ...props }) => {
-	return (
-		<button className={`btn btn-${variant}`} {...props} />
-	)
-}
+export const Button = styled.button<ButtonProps>`
+  padding: ${({ theme }) => theme.spacing.medium};
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: ${({ variant, theme }) => variant === 'secondary' ? theme.colors.secondary : theme.colors.primary};
+  color: #fff;
+  transition: opacity 0.2s ease-in-out;
 
-export default Button;
+  &:hover {
+    opacity: 0.8;
+  }
+`
