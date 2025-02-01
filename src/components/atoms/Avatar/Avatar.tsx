@@ -80,6 +80,7 @@ export const Avatar: React.FC<AvatarPros> = ({src, alt='Avatar', size='medium', 
 		const fallbackText = fallback || (alt ? alt.charAt(0).toUpperCase() : '?');
 		return <AvatarFallback variant={variant}>{fallbackText}</AvatarFallback>
 	}
+	
 	return (
 		<AvatarContainer size={computedSize} variant={variant} {...rest}>
 			{renderContent()}

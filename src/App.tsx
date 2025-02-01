@@ -10,6 +10,7 @@ import { Alert } from './components/molecules/Alert/Alert'
 import { AlertDialog } from './components/organisms/AlertDialog/AlertDialog'
 import { AspectRatio, StyledImage } from './components/atoms/AspectRatio/AspectRatio'
 import { Avatar, AvatarContainerDiv } from './components/atoms/Avatar/Avatar'
+import { Badge } from './components/atoms/Badge/Badge'
 
 const darkTheme: ThemeType = {
   ...defaultTheme,
@@ -155,6 +156,27 @@ const App: React.FC = () => {
             />
           </AvatarContainerDiv>
         </div>
+
+        <AvatarContainerDiv>
+          <Badge variant="default" size="small">
+            Default Small
+          </Badge>
+          <Badge variant="primary" size="medium">
+            Primary Medium
+          </Badge>
+          <Badge variant="secondary" size="large" pill>
+            Secondary Large (Pill)
+          </Badge>
+          <Badge variant="success" pill>
+            Success
+          </Badge>
+          <Badge variant="warning" size="small">
+            Warning Small
+          </Badge>
+          <Badge variant="error" size="large">
+            Error Large
+          </Badge>
+        </AvatarContainerDiv>
       </Suspense>
     </div>
   )
