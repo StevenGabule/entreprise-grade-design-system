@@ -15,6 +15,7 @@ import { BreadCrumbContainer, Breadcrumb } from './components/molecules/Breadcru
 import { CalendarContainer, Calendar } from './components/organisms/Calendar/Calendar'
 import { Card, CardContainerWrapper } from './components/molecules/Card/Card'
 import { Carousel, SlideContent } from './components/molecules/Carousel/Carousel'
+import { Chart, ChartContainerWrapper, sampleData } from './components/organisms/Chart/Chart'
 
 const darkTheme: ThemeType = {
   ...defaultTheme,
@@ -30,6 +31,7 @@ const App: React.FC = () => {
   const { setTheme, theme } = useTheme()
   const [dialogOpen, setDialogOpen] = React.useState(false)
   const [selectedCalendar, setSelectedCalendar] = React.useState<Date | undefined>(undefined);
+  const [chartType, setChartType] = React.useState<'line' | 'bar' | 'area' | 'pie'>('line');
 
   const handleToggleTheme = () => {
     setTheme(theme.colors.background === defaultTheme.colors.background ? darkTheme : defaultTheme)
@@ -231,6 +233,22 @@ const App: React.FC = () => {
             </Carousel>
           </div>
         </div>
+
+        <ChartContainerWrapper>
+          <div style={{ marginBottom: '1rem' }}>
+            <button onClick={() => setChartType('line')}>Line</button>
+            <button onClick={() => setChartType('bar')}>Bar</button>
+            <button onClick={() => setChartType('area')}>Area</button>
+            <button onClick={() => setChartType('pie')}>Pie</button>
+          </div>
+          <Chart
+            type={chartType}
+            data={sampleData}
+            xKey="date"
+            yKeys={['sales', 'profit']}
+            colors={['#8884d8', '#82ca9d']}
+          />
+        </ChartContainerWrapper>
       </Suspense>
     </div>
   )
