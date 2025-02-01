@@ -12,6 +12,8 @@ import { AspectRatio, StyledImage } from './components/atoms/AspectRatio/AspectR
 import { Avatar, AvatarContainerDiv } from './components/atoms/Avatar/Avatar'
 import { Badge } from './components/atoms/Badge/Badge'
 import { BreadCrumbContainer, Breadcrumb } from './components/molecules/Breadcrumb/Breadcrumb'
+import { CalendarContainer, Calendar } from './components/organisms/Calendar/Calendar'
+import { Card, CardContainerWrapper } from './components/molecules/Card/Card'
 
 const darkTheme: ThemeType = {
   ...defaultTheme,
@@ -26,6 +28,7 @@ const darkTheme: ThemeType = {
 const App: React.FC = () => {
   const { setTheme, theme } = useTheme()
   const [dialogOpen, setDialogOpen] = React.useState(false)
+  const [selectedCalendar, setSelectedCalendar] = React.useState<Date | undefined>(undefined);
 
   const handleToggleTheme = () => {
     setTheme(theme.colors.background === defaultTheme.colors.background ? darkTheme : defaultTheme)
@@ -181,7 +184,6 @@ const App: React.FC = () => {
 
         <div>
           <h2>Breadcrumb</h2>
-
           <BreadCrumbContainer>
             <Breadcrumb>
               <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
@@ -189,6 +191,34 @@ const App: React.FC = () => {
               <Breadcrumb.Item isCurrentPage>Product Details</Breadcrumb.Item>
             </Breadcrumb>
           </BreadCrumbContainer>
+        </div>
+        <div>
+          <h2>Calendar</h2>
+          <CalendarContainer>
+            <Calendar
+              // @ts-ignore
+              mode="single" // Supports "single", "multiple", or "range" modes
+              selected={selectedCalendar}
+              onSelect={setSelectedCalendar}
+            />
+            {selectedCalendar && <p>selectedCalendar Date: {selectedCalendar.toLocaleDateString()}</p>}
+          </CalendarContainer>
+        </div>
+        <div style={{width: '30%'}}>
+          <h2>Card</h2>
+          <CardContainerWrapper>
+            <Card>
+              <Card.Header>
+                Card Title
+              </Card.Header>
+              <Card.Content>
+                <p>This is the main content of the card. It can include text, images, or any other React elements.</p>
+              </Card.Content>
+              <Card.Footer>
+                <Button variant="primary">Action</Button>
+              </Card.Footer>
+            </Card>
+          </CardContainerWrapper>
         </div>
       </Suspense>
     </div>
