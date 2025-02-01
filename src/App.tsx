@@ -11,6 +11,7 @@ import { AlertDialog } from './components/organisms/AlertDialog/AlertDialog'
 import { AspectRatio, StyledImage } from './components/atoms/AspectRatio/AspectRatio'
 import { Avatar, AvatarContainerDiv } from './components/atoms/Avatar/Avatar'
 import { Badge } from './components/atoms/Badge/Badge'
+import { BreadCrumbContainer, Breadcrumb } from './components/molecules/Breadcrumb/Breadcrumb'
 
 const darkTheme: ThemeType = {
   ...defaultTheme,
@@ -177,6 +178,18 @@ const App: React.FC = () => {
             Error Large
           </Badge>
         </AvatarContainerDiv>
+
+        <div>
+          <h2>Breadcrumb</h2>
+
+          <BreadCrumbContainer>
+            <Breadcrumb>
+              <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+              <Breadcrumb.Item href="/products">Products</Breadcrumb.Item>
+              <Breadcrumb.Item isCurrentPage>Product Details</Breadcrumb.Item>
+            </Breadcrumb>
+          </BreadCrumbContainer>
+        </div>
       </Suspense>
     </div>
   )
