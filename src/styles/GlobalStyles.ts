@@ -4,7 +4,7 @@ export const GlobalStyles = createGlobalStyle`
 	@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 	/* Global Reset and Base Typography */
 	body {
-		margin: 0;
+		margin: 0 0 20% 0;
 		padding: 20px;
 		font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 		font-size: 16px;

@@ -7,6 +7,7 @@ import { AccordionItem } from './components/organisms/Accordion/AccordionItem'
 import { AccordionHeader } from './components/organisms/Accordion/AccordionHeader'
 import { AccordionPanel } from './components/organisms/Accordion/AccordionPanel'
 import { Alert } from './components/molecules/Alert/Alert'
+import { AlertDialog } from './components/organisms/AlertDialog/AlertDialog'
 
 const darkTheme: ThemeType = {
   ...defaultTheme,
@@ -20,10 +21,14 @@ const darkTheme: ThemeType = {
 
 const App: React.FC = () => {
   const { setTheme, theme } = useTheme()
+  const [dialogOpen, setDialogOpen] = React.useState(false)
 
   const handleToggleTheme = () => {
     setTheme(theme.colors.background === defaultTheme.colors.background ? darkTheme : defaultTheme)
   }
+
+  const handleOpenDialog = () => setDialogOpen(true)
+  const handleCloseDialog = () => setDialogOpen(false)
 
   return (
     <div style={{ width: '100%', height: '100vh', background: theme.colors.background, color: theme.colors.text }}>
@@ -87,7 +92,22 @@ const App: React.FC = () => {
             dismissible
           />
         </div>
-
+        <div>
+          <h2>Alert Dialog Example</h2>
+          <Button onClick={handleOpenDialog} variant='primary'>Open Alert Dialog</Button>
+          <AlertDialog
+            open={dialogOpen}
+            title="Attention Required"
+            message="This is an important alert dialog. Please read the information carefully before proceeding."
+            onClose={handleCloseDialog}
+            actions={
+              <>
+                <Button onClick={handleCloseDialog} variant='ghost'>Cancel</Button>
+                <Button onClick={() => alert('Confirmed!')} variant='primary'>Confirm</Button>
+              </>
+            }
+          />
+        </div>
       </Suspense>
     </div>
   )
